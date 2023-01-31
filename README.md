@@ -216,32 +216,40 @@ GROUP BY year_of_delivery, month_of_delivery
 order by year_of_delivery
 ```
 
-#In relation to delivery time:
+### In relation to delivery time:
 
-#What’s the average time between the order being placed and the product being delivered?
+- What’s the average time between the order being placed and the product being delivered?
 
-#option 1#
+1. option 1
+```sql
 select avg(TIMESTAMPDIFF(day,order_purchase_timestamp,order_delivered_customer_date))
-FROM orders;
+FROM orders
+```
 
-#option 2#
+2. option 2
+```sql
 SELECT (TIMESTAMPDIFF(day,order_purchase_timestamp,order_delivered_customer_date)) as delivery_time, order_id as all_orders
-FROM orders;
-
+FROM orders
+```
+```sql
 SELECT sum(TIMESTAMPDIFF(day,order_purchase_timestamp,order_delivered_customer_date)) as delivery_time, count(order_id) as all_orders
-FROM orders;
-
+FROM orders
+```
+```sql
 SELECT (sum(TIMESTAMPDIFF(day,order_purchase_timestamp,order_delivered_customer_date))/count(order_id)) as avarage_order_time
-FROM orders;
+FROM orders
+```
 
-#How many orders are delivered on time?
+- How many orders are delivered on time?
 
+```sql
 select count(distinct order_id) as delivered_on_time
 from orders
-where (timestampdiff(day,order_delivered_customer_date,order_estimated_delivery_date)) = 0;
+where (timestampdiff(day,order_delivered_customer_date,order_estimated_delivery_date)) = 0
+```
+- How many orders are delivered with a delay?
 
-#How many orders are delivered with a delay?
-
+```sql
 SELECT count(order_id) as deliveries,
 case 
     when TIMESTAMPDIFF(day, order_estimated_delivery_date, order_delivered_customer_date) < 0
@@ -252,9 +260,12 @@ case
 end as "waiting_time"
 from orders
 group by waiting_time
-ORDER BY deliveries ASC;
+ORDER BY deliveries ASC
+```
 
-# Total amount of all orders delivered on time?
+- Total amount of all orders delivered on time?
 
+```sql
 select count(distinct order_id) as delivered_on_time
 from orders
+```
