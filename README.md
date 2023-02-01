@@ -25,7 +25,7 @@ In Brazil, however, **Eniac is considering signing a 3-year contract with Magist
 
 Please follow the list of more conrete questions from the different memebers if the Eniac company.
 
-We got a data from magist and got the answers to our questions wiht mySQL.
+We received a dataset from magist and answered related business questions wiht mySQL.
 
 ---
 
