@@ -157,7 +157,7 @@ from orders
 select count(distinct(seller_id)) as "Amount of all sellers" from order_items
 ```
 
--How many Tech sellers are there?
+- How many Tech sellers are there?
 
 ```sql
 select count(distinct(seller_id)) as "Amount of tech sellers"
@@ -221,14 +221,12 @@ order by year_of_delivery
 - What’s the average time between the order being placed and the product being delivered?
 
 1. option 1
-
 ```sql
 select avg(TIMESTAMPDIFF(day,order_purchase_timestamp,order_delivered_customer_date))
 FROM orders
 ```
 
 2. option 2
-
 ```sql
 SELECT (TIMESTAMPDIFF(day,order_purchase_timestamp,order_delivered_customer_date)) as delivery_time, order_id as all_orders
 FROM orders
