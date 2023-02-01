@@ -165,7 +165,7 @@ from product_category_name_translation
 inner join products using (product_category_name)
 inner join order_items using (product_id)
 where product_category_name_english in ("Computers","Computers_accessories","Electronics","Tablets_printing_image","Watches_gifts")
-``
+```
 
 - What percentage of overall sellers are Tech sellers?
 
