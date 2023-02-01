@@ -221,12 +221,14 @@ order by year_of_delivery
 - What’s the average time between the order being placed and the product being delivered?
 
 1. option 1
+
 ```sql
 select avg(TIMESTAMPDIFF(day,order_purchase_timestamp,order_delivered_customer_date))
 FROM orders
 ```
 
 2. option 2
+
 ```sql
 SELECT (TIMESTAMPDIFF(day,order_purchase_timestamp,order_delivered_customer_date)) as delivery_time, order_id as all_orders
 FROM orders
@@ -235,11 +237,11 @@ FROM orders
 SELECT sum(TIMESTAMPDIFF(day,order_purchase_timestamp,order_delivered_customer_date)) as delivery_time, count(order_id) as all_orders
 FROM orders
 ```
+
 ```sql
 SELECT (sum(TIMESTAMPDIFF(day,order_purchase_timestamp,order_delivered_customer_date))/count(order_id)) as avarage_order_time
 FROM orders
 ```
-
 - How many orders are delivered on time?
 
 ```sql
